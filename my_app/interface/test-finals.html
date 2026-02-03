@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finals Tab Test</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .sidebar {
+            width: 300px;
+            background-color: white;
+            border-right: 1px solid #eee;
+            padding: 20px;
+        }
+        .sidebar-tabs {
+            display: flex;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+        .sidebar-tabs a {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+        .sidebar-tabs a.active {
+            color: #142A50;
+        }
+        .sidebar-tabs a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #142A50;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #142A50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-tabs">
+                <a href="#" data-tab="Courses">Courses</a>
+                <a href="#" data-tab="Events">Events</a>
+                <a href="#" data-tab="Finals" class="active">Finals</a>
+            </div>
+            
+            <div id="Courses" class="tab-content">
+                <h3>Courses Content</h3>
+                <p>This is the Courses tab content.</p>
+            </div>
+            
+            <div id="Events" class="tab-content">
+                <h3>Events Content</h3>
+                <p>This is the Events tab content.</p>
+            </div>
+            
+            <div id="Finals" class="tab-content active">
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Finals Tab Test</h1>
+            <p>This page tests the functionality of the Finals tab in the sidebar.</p>
+            <button id="reloadBtn">Reload Finals Tab</button>
+        </div>
+    </div>
+    
+    <script type="module">
+        import { initializeFinalsTab } from './js/finals.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Document loaded, initializing sidebar tabs');
+            
+
+            document.querySelectorAll('.sidebar-tabs a').forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+
+                    document.querySelectorAll('.sidebar-tabs a').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    
+
+                    this.classList.add('active');
+                    
+
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                        content.style.display = 'none';
+                    });
+                    
+
+                    const tabId = this.getAttribute('data-tab');
+                    const tabContent = document.getElementById(tabId);
+                    if (tabContent) {
+                        tabContent.classList.add('active');
+                        tabContent.style.display = 'block';
+                        
+
+                        if (tabId === 'Finals') {
+                            console.log('Initializing Finals tab from tab click');
+                            initializeFinalsTab();
+                        }
+                    }
+                });
+            });
+            
+
+            console.log('Initializing Finals tab on page load');
+            setTimeout(initializeFinalsTab, 100);
+            
+
+            document.getElementById('reloadBtn').addEventListener('click', () => {
+                console.log('Reloading Finals tab');
+                const finalsTab = document.getElementById('Finals');
+                if (finalsTab) {
+                    finalsTab.innerHTML = '';
+                    initializeFinalsTab();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

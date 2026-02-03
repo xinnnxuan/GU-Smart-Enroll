@@ -1,0 +1,289 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f6f8fa;
+}
+
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.auth-container {
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 30px;
+    width: 320px;
+    max-width: 90%;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-header h1 {
+    color: #091F40;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.auth-logo {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #0969da;
+    box-shadow: 0 0 0 2px rgba(9, 105, 218, 0.2);
+    outline: none;
+}
+
+.form-actions {
+    margin-top: 20px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #0969da;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #0a59a6;
+}
+
+.btn-primary {
+    background-color: #235EB3;
+}
+
+.btn-primary:hover {
+    background-color: #1A478A;
+}
+
+.btn-microsoft {
+    background-color: #ffffff;
+    color: #091F40;
+    border: 1px solid #d0d7de;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-microsoft:hover {
+    background-color: #f6f8fa;
+}
+
+.ms-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.ms-restriction {
+    margin-top: 5px;
+    text-align: center;
+    color: #6e7781;
+    font-size: 12px;
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #d0d7de;
+}
+
+.auth-divider span {
+    color: #6e7781;
+    padding: 0 10px;
+    font-size: 13px;
+}
+
+.social-login {
+    margin-bottom: 20px;
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.auth-links a {
+    color: #0969da;
+    text-decoration: none;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+.register-link, .login-link {
+    margin-top: 10px;
+    color: #6e7781;
+}
+
+.field-error {
+    color: #cf222e;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.auth-message, .status-message {
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-top: 20px;
+    display: none;
+    max-width: 90%;
+    width: 320px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 14px;
+}
+
+.auth-message.error-message, .status-message.error {
+    background-color: #ffebe9;
+    border: 1px solid #ffccd2;
+    color: #cf222e;
+}
+
+.auth-message.success-message, .status-message.success {
+    background-color: #dafbe1;
+    border: 1px solid #aceebb;
+    color: #116329;
+}
+
+.auth-message.info-message, .status-message.info {
+    background-color: #f6f8fa;
+    border: 1px solid #d0d7de;
+    color: #24292f;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #0d1117;
+        color: #c9d1d9;
+    }
+    
+    .auth-container {
+        background-color: #161b22;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    .auth-header h1 {
+        color: #f0f6fc;
+    }
+    
+    .form-group input {
+        background-color: #0d1117;
+        border-color: #30363d;
+        color: #c9d1d9;
+    }
+    
+    .form-group input:focus {
+        border-color: #1f6feb;
+        box-shadow: 0 0 0 2px rgba(31, 111, 235, 0.2);
+    }
+    
+    .btn-microsoft {
+        background-color: #21262d;
+        border-color: #30363d;
+        color: #c9d1d9;
+    }
+    
+    .btn-microsoft:hover {
+        background-color: #30363d;
+    }
+    
+    .auth-divider::before,
+    .auth-divider::after {
+        border-color: #30363d;
+    }
+    
+    .auth-divider span,
+    .ms-restriction,
+    .register-link,
+    .login-link {
+        color: #8b949e;
+    }
+    
+    .auth-links a {
+        color: #58a6ff;
+    }
+    
+    .auth-message.error-message,
+    .status-message.error {
+        background-color: rgba(207, 34, 46, 0.1);
+        border-color: rgba(207, 34, 46, 0.3);
+        color: #f85149;
+    }
+    
+    .auth-message.success-message,
+    .status-message.success {
+        background-color: rgba(17, 99, 41, 0.1);
+        border-color: rgba(17, 99, 41, 0.3);
+        color: #7ee787;
+    }
+    
+    .auth-message.info-message,
+    .status-message.info {
+        background-color: rgba(36, 41, 47, 0.1);
+        border-color: rgba(36, 41, 47, 0.3);
+        color: #c9d1d9;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 20px 15px;
+    }
+    
+    .auth-header h1 {
+        font-size: 20px;
+    }
+} 

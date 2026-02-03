@@ -1,0 +1,394 @@
+
+button {
+    background-color: #002467;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+button:hover {
+    background-color: #003399;
+    transform: translateY(-1px);
+}
+
+
+.nav-tabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.nav-tabs a {
+    padding: 10px 15px;
+    color: #6c757d;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+}
+.nav-tabs a.active {
+    color: #142A50;
+    border-bottom-color: #142A50;
+}
+.nav-tabs a:hover {
+    color: #142A50;
+    border-bottom-color: #e0e0e0;
+}
+
+
+.sidebar-tabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: transparent;
+    width: 100%;
+}
+.sidebar-tabs a {
+    flex: 1;
+    padding: 10px 15px;
+    color: #6c757d;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+    font-size: 14px;
+}
+.sidebar-tabs a.active {
+    color: #142A50;
+    border-bottom: 2px solid #142A50;
+    font-weight: 600;
+}
+.sidebar-tabs a:hover:not(.active) {
+    color: #142A50;
+}
+
+
+.sidebar .tab-content {
+    display: none;
+}
+.sidebar .tab-content.active {
+    display: block;
+}
+
+
+.weekday-buttons {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0;
+    justify-content: space-between;
+}
+.weekday-btn, .division-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #C4C8CE;
+    background-color: transparent;
+    color: #6c757d;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: clamp(12px, 0.9vw, 14px);
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    white-space: nowrap;
+    min-width: fit-content;
+}
+.weekday-btn:hover, .division-btn:hover {
+    background-color: rgba(108, 117, 125, 0.1);
+}
+.weekday-btn.selected, .division-btn.selected {
+    background-color: #023373 !important;
+    border-color: #023373 !important;
+    color: #ffffff !important;
+}
+
+
+.color-picker {
+    position: absolute;
+    background: white;
+    border: 1px solid #e0e4e8;
+    border-radius: 4px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1100;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+.color-option {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+
+.campus-dropdown, .dropdown-content {
+    position: relative;
+    width: 100%;
+}
+.dropdown-button {
+    width: 100%;
+    text-align: left;
+    padding: 8px 0;
+    background: none;
+    border: none;
+    color: #495057;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em; 
+    transition: transform 0.2s ease;
+}
+.dropdown-button .arrow {
+    font-size: 0.8em;
+    margin-left: 8px; 
+    color: #495057; 
+}
+.dropdown-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    margin-top: 4px;
+}
+.dropdown-list.show, .dropdown-item:hover {
+    display: block;
+    background-color: #B41231;
+    color: #ffffff;
+}
+.dropdown-item {
+    padding: 8px 16px;
+    color: #495057;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+
+.export-calendar-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.export-calendar-btn:hover {
+    background-color: #357ABD;
+}
+
+
+.context-menu {
+    position: fixed;
+    background: white;
+    border: 1px solid #e0e4e8;
+    border-radius: 4px;
+    padding: 4px 0;
+    min-width: 150px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.menu-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.menu-item:hover {
+    background-color: #f5f7fa;
+}
+
+
+.section-item {
+    margin-bottom: 16px;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+
+.section-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.section-header h4 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: 600;
+    color: #142A50;
+}
+
+.availability {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.availability.available {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.availability.limited {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.availability.full {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.section-details {
+    margin-bottom: 12px;
+}
+
+.section-details p {
+    margin: 4px 0;
+    font-size: 0.9em;
+}
+
+.section-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.add-section-btn, .search-prereq-btn {
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-weight: 500;
+}
+
+.add-section-btn {
+    background-color: #142A50;
+    color: white;
+    flex: 1;
+}
+
+.add-section-btn:hover {
+    background-color: #0e1e3a;
+}
+
+.search-prereq-btn {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.search-prereq-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.course-header {
+    margin: 16px 0 8px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.course-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #142A50;
+}
+
+.section-count {
+    margin: 4px 0 0 0;
+    font-size: 0.8em;
+    color: #6c757d;
+}
+
+
+.no-results {
+    padding: 20px;
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+}
+
+
+.loading-indicator {
+    padding: 20px;
+    text-align: center;
+    color: #495057;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.loading-indicator::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #142A50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+
+.connection-error {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.connection-error button {
+    background-color: #142A50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.connection-error button:hover {
+    background-color: #0e1d36;
+}

@@ -1,0 +1,456 @@
+.finals-header {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+    background: white;
+}
+
+.semester-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.semester-switch {
+    padding: 8px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.semester-switch.active {
+    background: #142A50;
+    color: white;
+    border-color: #142A50;
+}
+
+.finals-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #142A50;
+    margin-bottom: 5px;
+}
+
+.finals-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.my-finals-list {
+    padding: 0 15px;
+}
+
+.finals-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+.finals-list li {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.finals-list li strong {
+    color: #142A50;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.finals-list li:hover {
+    border-color: #142A50;
+    background: #f8f9fa;
+}
+
+.view-all-finals {
+    width: 100%;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.view-all-finals:hover {
+    background-color: #e8e8e8;
+}
+
+.finals-filters {
+    margin-bottom: 15px;
+}
+
+.finals-search {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.finals-table-container {
+    padding: 0 15px;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.finals-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.finals-table th,
+.finals-table td {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.finals-table th {
+    background: #f8f9fa;
+    font-weight: 500;
+}
+
+.finals-table td {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #666;
+}
+
+.finals-table tr:hover {
+    background: #f8f9fa;
+}
+
+.finals-table tr:last-child td {
+    border-bottom: none;
+}
+
+.finals-info-box {
+    background-color: #f8f9fa;
+    border-left: 4px solid #4A90E2;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.finals-info-box h3 {
+    color: #142A50;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.finals-info-box p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+
+.schedule-cell.has-final {
+    background: rgba(200,16,46,0.1);
+    position: relative;
+}
+
+.final-indicator {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: #C8102E;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.final-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    min-width: 200px;
+    color: #333;
+}
+
+.final-indicator:hover .final-tooltip {
+    display: block;
+}
+
+
+.finals-search:focus {
+    outline: none;
+    border-color: #142A50;
+}
+
+
+body.dark-mode .finals-table-container {
+    background: #2c3e50;
+}
+
+body.dark-mode .finals-table th {
+    background: #1a2634;
+}
+
+body.dark-mode .finals-table td {
+    border-color: #3a4a5c;
+    color: #e0e0e0;
+}
+
+body.dark-mode .finals-table tr:hover td {
+    background: rgba(255,255,255,0.05);
+}
+
+body.dark-mode .final-tooltip {
+    background: #2c3e50;
+    border-color: #3a4a5c;
+}
+
+body.dark-mode .final-tooltip strong {
+    color: #e0e0e0;
+}
+
+body.dark-mode .final-tooltip div {
+    color: #b0b0b0;
+}
+
+body.dark-mode .finals-search {
+    background: #2c3e50;
+    border-color: #3a4a5c;
+    color: #e0e0e0;
+}
+
+
+body.dark-mode .semester-switch {
+    background-color: #2c3e50;
+    border-color: #3a4a5c;
+    color: #e0e0e0;
+}
+
+body.dark-mode .semester-switch.active {
+    background-color: #4A90E2;
+    border-color: #4A90E2;
+}
+
+body.dark-mode .finals-table th {
+    background-color: #2c3e50;
+}
+
+body.dark-mode .finals-table td {
+    border-bottom-color: #3a4a5c;
+}
+
+body.dark-mode .finals-table tr:nth-child(5n+6) {
+    border-bottom-color: #3a4a5c; 
+}
+
+body.dark-mode .finals-info-box {
+    background-color: #2c3e50;
+    border-left-color: #4A90E2;
+}
+
+body.dark-mode .finals-info-box h3 {
+    color: #e0e0e0;
+}
+
+.tab-button[onclick*="Finals"] {
+    display: block !important;
+    visibility: visible !important;
+}
+
+#Finals.tab-content {
+    display: none;
+    width: 100%;
+    background-color: white;
+    padding: 15px;
+}
+
+#Finals.tab-content.active {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.finals-content {
+    padding: 20px;
+    height: 100%;
+    overflow: auto;
+}
+
+
+.finals-cards {
+    display: none;
+}
+
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+
+@media (max-width: 768px) {
+    .finals-table {
+        display: none;
+    }
+
+    .finals-cards {
+        display: grid;
+        gap: 15px;
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        background-color: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        padding: 15px;
+    }
+
+    .card h3 {
+        margin: 0 0 10px 0;
+        color: #142A50;
+        font-size: 16px;
+    }
+
+    .card p {
+        margin: 5px 0;
+        color: #666;
+    }
+
+    .finals-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .finals-list li > div:last-child {
+        margin-top: 8px;
+    }
+}
+
+
+#Finals.tab-content {
+    width: 100% !important;
+    background-color: white !important;
+    padding: 15px !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+
+.finals-header,
+.finals-content,
+.finals-title,
+.finals-subtitle,
+.finals-table,
+.finals-table-container,
+.semester-toggle,
+.semester-switch,
+.finals-info-box {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+.semester-toggle {
+    display: flex !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+}
+
+.semester-switch {
+    padding: 8px 16px !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 4px !important;
+    background: white !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+}
+
+.semester-switch.active {
+    background: #142A50 !important;
+    color: white !important;
+    border-color: #142A50 !important;
+}
+
+
+.finals-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-top: 15px !important;
+    border: 1px solid #e0e0e0 !important;
+    font-size: 14px !important;
+}
+
+.finals-table th,
+.finals-table td {
+    padding: 12px !important;
+    border: 1px solid #e0e0e0 !important;
+    text-align: left !important;
+}
+
+.finals-table th {
+    background: #f8f9fa !important;
+    font-weight: 500 !important;
+    color: #333 !important;
+}
+
+.finals-info-box {
+    margin-top: 20px !important;
+    padding: 15px !important;
+    background-color: #f9f9f9 !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 4px !important;
+}
+
+.finals-info-box h3 {
+    font-size: 16px !important;
+    color: #142A50 !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+}
+
+.finals-info-box p {
+    margin: 5px 0 !important;
+    font-size: 14px !important;
+    color: #555 !important;
+    line-height: 1.5 !important;
+}
+
+
+.tab-button[data-tab="Finals"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    cursor: pointer !important;
+    color: #333 !important;
+}

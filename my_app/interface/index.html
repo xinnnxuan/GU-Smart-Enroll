@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration | Gonzaga University</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="icon" href="./assets/GU Logo/Gonzaga_Bulldogs_logo.svg.png" type="image/png">
+  <link rel="stylesheet" href="./css/component.css">
+  <link rel="stylesheet" href="./css/darkmode.css">
+  <link rel="stylesheet" href="./css/events.css">
+  <link rel="stylesheet" href="./css/finals.css">
+  <link rel="stylesheet" href="./css/forms.css">
+  <link rel="stylesheet" href="./css/general.css">
+  <link rel="stylesheet" href="./css/interactive.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/misc.css">
+  <link rel="stylesheet" href="./css/navigation.css">
+    <link rel="stylesheet" href="./css/tables.css">
+  <link rel="stylesheet" href="./css/user.css">
+  <link rel="stylesheet" href="./css/map.css">
+  <script src="./js/map.js"></script>
+</head>
+<body>
+    <script>
+
+        (function() {
+            const user = sessionStorage.getItem('user');
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+            
+            if (!isLoggedIn || !user) {
+                console.error('Authentication required - redirecting to login page');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            try {
+
+                const userData = JSON.parse(user);
+                if (!userData || !userData.user_id || !userData.user_name) {
+                    console.error('Invalid user data - redirecting to login page');
+                    sessionStorage.removeItem('user');
+                    sessionStorage.removeItem('isLoggedIn');
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                console.log('Authentication successful - user:', userData.name);
+            } catch (error) {
+                console.error('Error parsing user data:', error);
+                sessionStorage.removeItem('user');
+                sessionStorage.removeItem('isLoggedIn');
+                window.location.href = 'login.html';
+                return;
+            }
+        })();
+    </script>
+    
+    <header>
+        
+        <div class="header-left">
+            <div class="logo">
+                <img src="./assets/GU Logo/IMG_4571.jpg" alt="Gonzaga University Logo">
+                <div class="logo-text">
+                    <span class="university-name">GONZAGA</span>
+                    <span class="university-subtitle">UNIVERSITY</span>
+                </div>
+            </div>
+
+            <div class="semester-dropdown">
+                <button class="semester-button">Spring 2025 <span class="arrow">▼</span></button>
+                <div class="semester-content">
+                    <a href="#" onclick="changeSemester('Summer 2025')">Summer 2025</a>
+                    <a href="#" onclick="changeSemester('Spring 2025')">Spring 2025</a>
+                    <a href="#" onclick="changeSemester('Fall 2024')">Fall 2024</a>
+                    <a href="#" onclick="changeSemester('Summer 2024')">Summer 2024</a>
+                    <a href="#" onclick="changeSemester('Spring 2024')">Spring 2024</a>
+                    <a href="#" onclick="changeSemester('Fall 2023')">Fall 2023</a>
+                </div>
+            </div>
+
+      <div class="credits-display">0 Credits</div>
+            </div>
+
+        
+    <nav class="nav-links">
+      <a href="#" data-view="registration" class="active">Registration</a>
+      <a href="#" data-view="map">Map</a>
+      <a href="#" data-view="reflection">Reflection</a>
+
+    </nav>
+        
+        <div class="header-right">
+            <div class="export-container">
+                <button class="export-button">
+                    Export <span class="arrow">▼</span>
+                </button>
+        <div class="export-dropdown">
+                    <a href="#" onclick="exportToPDF(); return false;">Export as PDF</a>
+                    <a href="#" onclick="exportToAppleCalendar(); return false;">Apple Calendar</a>
+                    <a href="#" onclick="exportToGoogleCalendar(); return false;">Google Calendar</a>
+
+                </div>
+            </div>
+      <div class="user-dropdown">
+        <button class="nav-button">
+          <img src="./assets/GU Logo/Gonzaga_Bulldogs_logo.svg.png" alt="Bulldog" class="logo-img">
+          <span class="arrow">▼</span>
+        </button>
+        <div class="dropdown-content" id="userDropdown">
+          <div class="user-info">
+            <div class="student-name">Loading...</div>
+            <div class="student-id">ID: Loading...</div>
+                    </div>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-divider"></div>
+          <a href="#addClass" id="addClassLink">Add Class</a>
+          <a href="#signout">Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main style="display: flex; height: calc(100vh - 60px);">
+        
+        <div id="registration-view" class="view-container" style="display: flex; width: 100%;">
+            <div class="sidebar"></div>
+            
+            <div class="schedule-container" style="display: flex; flex-direction: column; flex: 1; min-height: 600px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); margin-left: 15px;">
+                <div class="schedule-grid">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>M</th>
+                                <th>T</th>
+                                <th>W</th>
+                                <th>R</th>
+                                <th>F</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr><td>8:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>9:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>10:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>11:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>12:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>13:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>14:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>15:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>16:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>17:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>18:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>19:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>20:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td>21:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+                    </div>
+            
+        
+        <div id="map-view" class="view-container" style="display: none; width: 100%;">
+            <div style="width: 100%; padding: 15px; display: flex; height: 100%;">
+                
+                <div style="width: 350px; background-color: white; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); height: calc(100% - 30px); overflow-y: auto; border-radius: 8px; margin-right: 15px; min-width: 350px;">
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #e0e0e0; margin-bottom: 20px; width: 100%; padding: 0;">
+                        <button class="map-tab-button active" onclick="openMapTab('WeekdayTab', event)" style="background: none; border: none; padding: 15px 0; font-weight: 500; cursor: pointer; width: 50%; text-align: center; color: #142A50; font-size: 15px; position: relative; margin: 0; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">Schedule</button>
+                        <button class="map-tab-button" onclick="openMapTab('BlueprintsTab', event)" style="background: none; border: none; padding: 15px 0; font-weight: 500; cursor: pointer; width: 50%; text-align: center; color: #333; font-size: 15px; position: relative; margin: 0; box-sizing: border-box; display: flex; justify-content: center; align-items: center;">Floor Plan</button>
+                    </div>
+                    
+                    
+                    <div id="WeekdayTab" class="map-tab-content active" style="display: block; width: 100%;">
+                        <div class="weekday-panels" style="display: flex; flex-direction: column; gap: 5px; width: 100%;">
+                            <div class="day-panel" style="border-radius: 4px; overflow: hidden;">
+                                <div class="day-header" onclick="toggleDayPanel(this)" style="background-color: #C3415A; color: white; padding: 12px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-weight: 500;">Monday</span>
+                                    <span class="arrow" style="transition: transform 0.3s;">▼</span>
+                                </div>
+                                <div class="day-content" style="background-color: #f5f5f5; padding: 15px; display: none;">
+                                    <p style="margin: 0;">No classes this day!</p>
+                        </div>
+            </div>
+            
+                            <div class="day-panel" style="border-radius: 4px; overflow: hidden;">
+                                <div class="day-header" onclick="toggleDayPanel(this)" style="background-color: #BC2A46; color: white; padding: 12px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-weight: 500;">Tuesday</span>
+                                    <span class="arrow" style="transition: transform 0.3s;">▼</span>
+        </div>
+                                <div class="day-content" style="background-color: #f5f5f5; padding: 15px; display: none;">
+                                    <p style="margin: 0;">MATH 231 - Calculus (2)</p>
+                                </div>
+                        </div>
+                
+                            <div class="day-panel" style="border-radius: 4px; overflow: hidden;">
+                                <div class="day-header" onclick="toggleDayPanel(this)" style="background-color: #B41330; color: white; padding: 12px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-weight: 500;">Wednesday</span>
+                                    <span class="arrow" style="transition: transform 0.3s;">▼</span>
+                                </div>
+                                <div class="day-content" style="background-color: #f5f5f5; padding: 15px; display: none;">
+                                    <p style="margin: 0;">No classes this day!</p>
+                                </div>
+                            </div>
+
+                            <div class="day-panel" style="border-radius: 4px; overflow: hidden;">
+                                <div class="day-header" onclick="toggleDayPanel(this)" style="background-color: #A2102C; color: white; padding: 12px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-weight: 500;">Thursday</span>
+                                    <span class="arrow" style="transition: transform 0.3s;">▼</span>
+                                </div>
+                                <div class="day-content" style="background-color: #f5f5f5; padding: 15px; display: none;">
+                                    <p style="margin: 0;">MATH 231 - Calculus (2)</p>
+                        </div>
+                        </div>
+                        
+                            <div class="day-panel" style="border-radius: 4px; overflow: hidden;">
+                                <div class="day-header" onclick="toggleDayPanel(this)" style="background-color: #900F26; color: white; padding: 12px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-weight: 500;">Friday</span>
+                                    <span class="arrow" style="transition: transform 0.3s;">▼</span>
+                    </div>
+                                <div class="day-content" style="background-color: #f5f5f5; padding: 15px; display: none;">
+                                    <p style="margin: 0;">No classes this day!</p>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    
+                    <div id="BlueprintsTab" class="map-tab-content" style="display: none; width: 100%;">
+                        
+                        <div style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px;">
+                            <button id="Herak" class="building-button" onclick="openHerakPDF()" style="width: 100%; padding: 12px 15px; text-align: left; background-color: white; color: #333; border: 1px solid #e0e0e0; border-radius: 4px; cursor: pointer; font-size: 15px; font-weight: 500; transition: all 0.2s;">Herak Center</button>
+                            <button id="JepsonFirst" class="building-button" onclick="openJepsonFirstFloorPDF()" style="width: 100%; padding: 12px 15px; text-align: left; background-color: white; color: #333; border: 1px solid #e0e0e0; border-radius: 4px; cursor: pointer; font-size: 15px; font-weight: 500; transition: all 0.2s;">Jepson - First Floor</button>
+                            <button id="JepsonBasement" class="building-button" onclick="openJepsonBasementPDF()" style="width: 100%; padding: 12px 15px; text-align: left; background-color: white; color: #333; border: 1px solid #e0e0e0; border-radius: 4px; cursor: pointer; font-size: 15px; font-weight: 500; transition: all 0.2s;">Jepson - Basement</button>
+                </div>
+
+                        
+                        <div id="blueprint-viewer" style="width: 100%; height: calc(100% - 180px); background-color: white; border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                            <p style="color: #666; font-size: 14px;">Select a building to view its blueprint</p>
+            </div>
+                    </div>
+                </div>
+                
+                
+                <div style="flex: 1; border-radius: 8px; overflow: hidden; background-color: #FFFFFF; box-shadow: 0 1px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+                    <div class="map-container" style="flex: 1; padding: 0;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.418973710349!2d-117.40477662402845!3d47.66729508951068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549e185c5df3f945%3A0xaf7c8489928f20!2sGonzaga%20University!5e0!3m2!1sen!2sus!4v1716416889721!5m2!1sen!2sus"
+                            width="100%"
+                            height="100%"
+                            style="border: 0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                    
+        
+        <div id="reflection-view" class="view-container" style="display: none; width: 100%;">
+            <div style="width: 100%; padding: 20px; text-align: center;">
+                <h2>Reflection Tool</h2>
+                <div style="max-width: 900px; margin: 0 auto; background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
+                    <p>Reflection tools and content will be displayed here.</p>
+                            </div>
+            </div>
+        </div>
+
+        
+        <div id="finals-view" class="view-container" style="display: none; width: 100%;">
+            <div style="width: 100%; padding: 20px;">
+                <div class="finals-header">
+                    
+            </div>
+            
+                <div class="finals-content">
+                    <h2 class="finals-title" style="font-size: 24px; font-weight: bold; text-align: center; color: #142A50;">SPRING 2025</h2>
+                    <p class="finals-subtitle" style="font-size: 16px; text-align: center; margin-bottom: 20px;">Final Examination Schedule (Undergraduate Courses Only)</p>
+
+                    <div class="full-finals-calendar">
+                        <div class="finals-table-container">
+                            <table class="finals-table" style="width: 100%; border-collapse: collapse;">
+                                <thead>
+
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px; font-weight: bold;">Study Day</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">no classes, no exams</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">All Day</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Monday, May 5, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">MWF</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">8:00 am</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">8:00 to 10:00 am</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Tuesday, May 6, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">TR</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">9:00, 9:25 am</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">10:30 am to 12:30 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Tuesday, May 6, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">MWF</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">11:00 am</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">1:00 to 3:00 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Tuesday, May 6, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">TR</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">1:50, 2:10, 2:40 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">3:30 to 5:30 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Tuesday, May 6, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">MWF</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">3:10 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">6:00 to 8:00 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Tuesday, May 6, 2025</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">MWF</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">9:00 am</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">8:00 to 10:00 am</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Wednesday, May 7, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">TR</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">10:50 am</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">10:30 am to 12:30 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Wednesday, May 7, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">TR</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">3:15 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">1:00 to 3:00 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Wednesday, May 7, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">MWF</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">2:10 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">3:30 to 5:30 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Wednesday, May 7, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">MWF</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">4:10 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">6:00 to 8:00 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Wednesday, May 7, 2025</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">MWF</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">10:00 am</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">8:00 to 10:00 am</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Thursday, May 8, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">TR</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">8:00 am</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">10:30 am to 12:30 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Thursday, May 8, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">MWF</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">1:10 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">1:00 to 3:00 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Thursday, May 8, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">TR</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">12:25 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">3:30 to 5:30 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Thursday, May 8, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">TR</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">4:10, 4:40 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">6:00 to 8:00 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Thursday, May 8, 2025</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">M or W</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">6:00 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">8:00 to 10:00 am</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Friday, May 9, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">T or R</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">6:00 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">10:30 am to 12:30 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Friday, May 9, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Arranged</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;"></td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">1:00 to 3:00 pm</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Friday, May 9, 2025</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 10px; font-weight: bold; text-align: center;">Grades are due from the Faculty by 4pm the Wednesday after finals week</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 10px; text-align: center;">Wednesday, May 14, 2025</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="finals-info-box">
+                    <h3>Finals Schedule Information</h3>
+                    <p>This schedule shows when your final exams will be based on your regular class meeting times.</p>
+                    <p>If you have any conflicts, please contact your professor as soon as possible.</p>
+            </div>
+            </div>
+            </div>
+    </main>
+
+    
+    <div id="addClassModal" class="modal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); justify-content:center; align-items:center;">
+      <div class="modal-content" style="background:#fff; padding:32px 24px; border-radius:8px; min-width:320px; max-width:90vw; box-shadow:0 4px 24px rgba(0,0,0,0.15); position:relative;">
+        <h3 style="margin-top:0;">Add Class</h3>
+        <input type="text" id="addClassSubject" placeholder="Subject (e.g. CPSC)" style="width:100%;margin-bottom:10px;padding:8px;">
+        <div id="addClassSubjectAutocomplete" class="autocomplete-list" style="display:none; position:absolute; background:#fff; border:1px solid #e0e0e0; border-radius:0 0 4px 4px; z-index:1100; max-height:200px; overflow-y:auto; width:calc(100% - 48px);"></div>
+        <input type="text" id="addClassCode" placeholder="Course Code (e.g. 121)" style="width:100%;margin-bottom:10px;padding:8px;">
+        <input type="text" id="addClassSection" placeholder="Section (e.g. 01)" style="width:100%;margin-bottom:10px;padding:8px;">
+        <input type="text" id="addClassTerm" placeholder="Term (e.g. Spring 2024)" style="width:100%;margin-bottom:10px;padding:8px;">
+        <div style="display:flex;gap:10px;justify-content:flex-end;">
+          <button id="addClassSubmit" style="padding:8px 18px; background:#142A50; color:#fff; border:none; border-radius:4px;">Add</button>
+          <button type="button" id="addClassCancel" style="padding:8px 18px; background:#eee; color:#333; border:none; border-radius:4px;">Cancel</button>
+            </div>
+        <span id="addClassError" style="color:red;display:none;"></span>
+        <div id="enrolledCoursesTable" style="margin-top:20px; max-height:220px; overflow-y:auto;"></div>
+      </div>
+    </div>
+
+    
+    <div id="event-edit-modal" class="event-edit-modal">
+        <div class="event-edit-container">
+            <button class="event-edit-close">&times;</button>
+            <h2>Edit Event</h2>
+            <form id="event-edit-form" class="event-edit-form">
+                <div class="form-group">
+                    <label for="edit-event-name">Event Name</label>
+                    <input type="text" id="edit-event-name" name="edit-event-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Time</label>
+                    <div class="time-inputs">
+                        <input type="time" id="edit-event-start" name="edit-event-start" required>
+                        <input type="time" id="edit-event-end" name="edit-event-end" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Days</label>
+                    <div class="event-edit-weekdays">
+                        <button type="button" class="weekday-btn" data-day="M">M</button>
+                        <button type="button" class="weekday-btn" data-day="T">T</button>
+                        <button type="button" class="weekday-btn" data-day="W">W</button>
+                        <button type="button" class="weekday-btn" data-day="R">R</button>
+                        <button type="button" class="weekday-btn" data-day="F">F</button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Color</label>
+                    <div class="event-color-options">
+                        <div class="color-option" style="background-color: #3498db;" data-color="#3498db"></div>
+                        <div class="color-option" style="background-color: #2ecc71;" data-color="#2ecc71"></div>
+                        <div class="color-option" style="background-color: #e74c3c;" data-color="#e74c3c"></div>
+                        <div class="color-option" style="background-color: #f39c12;" data-color="#f39c12"></div>
+                        <div class="color-option" style="background-color: #9b59b6;" data-color="#9b59b6"></div>
+                        <div class="color-option" style="background-color: #1abc9c;" data-color="#1abc9c"></div>
+                    </div>
+                </div>
+                
+                <input type="hidden" id="edit-event-id">
+                <input type="hidden" id="edit-event-color">
+                
+                <div class="event-edit-actions">
+                    <button type="button" class="event-delete-btn">Delete</button>
+                    <button type="button" class="event-duplicate-btn">Duplicate</button>
+                    <button type="submit" class="event-update-btn">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    <script type="module" src="./js/auth.js"></script>
+    <script type="module" src="./js/calenderExport.js"></script>
+    <script type="module" src="./js/contextMenu.js"></script>
+    <script type="module" src="./js/course.js"></script>
+  <script type="module" src="./js/dropdown.js"></script>
+    <script type="module" src="./js/eventEditing.js"></script>
+    <script type="module" src="./js/eventListeners.js"></script>
+    <script type="module" src="./js/eventManagement.js"></script>
+  <script type="module" src="./js/events.js"></script>
+  <script type="module" src="./js/export.js"></script>
+    <script type="module" src="./js/exportPDF.js"></script>
+    <script type="module" src="./js/exportService.js"></script>
+  <script type="module" src="./js/finals.js"></script>
+  <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/mockdata.js"></script>
+  <script type="module" src="./js/navigation.js"></script>
+  <script type="module" src="./js/notifications.js"></script>
+    <script type="module" src="./js/pdfHandling.js"></script>
+    <script type="module" src="./js/prereqService.js"></script>
+    <script type="module" src="./js/registration.js"></script>
+  <script type="module" src="./js/schedule.js"></script>
+  <script type="module" src="./js/sidebar.js"></script>
+    <script type="module" src="./js/tabs.js"></script>
+  <script type="module" src="./js/theme.js"></script>
+    <script type="module" src="./js/uiControls.js"></script>
+    <script type="module" src="./js/uiInteractions.js"></script>
+  <script type="module" src="./js/utility.js"></script>
+</body>
+</html> 

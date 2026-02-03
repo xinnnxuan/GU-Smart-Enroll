@@ -1,0 +1,675 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5; 
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+a::after, a::before {
+    content: none;
+    display: none;
+}
+
+input, select {
+    background-color: white;
+    border: 1px solid #e0e4e8;
+    color: #495057;
+    padding: 12px 15px; 
+    border-radius: 4px; 
+    width: 100%;
+    margin-bottom: 16px; 
+    transition: border-color 0.2s;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    border-color: #142A50;
+    outline: none;
+}
+
+
+header {
+    background-color: #142A50; 
+    display: flex;
+    align-items: center;
+    padding: 15px 40px; 
+    color: white;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+}
+
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 30px; 
+    flex: 0 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 0;
+}
+
+.logo img {
+    height: 55px;
+    width: auto;
+    margin-right: 15px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1; 
+}
+
+.university-name {
+    color: #FFFFFF;
+    font-size: 28px; 
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: serif;
+}
+
+.university-subtitle {
+    color: #FFFFFF;
+    font-size: 14px; 
+    font-weight: 500;
+    letter-spacing: 6px;
+    margin-top: 3px; 
+    font-family: serif;
+}
+
+.semester-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.semester-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px;
+    white-space: nowrap;
+}
+
+.arrow {
+    font-size: 8px;
+    margin-left: 3px;
+}
+
+.credits-display {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex: 1 1 auto;
+    justify-content: center;
+    margin: 0 40px;
+    max-width: 800px;
+}
+
+
+.nav-links a {
+    white-space: nowrap;
+}
+
+
+header .nav-links a.active::after {
+    display: none !important;
+}
+
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; 
+    flex: 0 0 auto;
+}
+
+.export-container {
+    position: relative;
+}
+
+.user-dropdown {
+    position: relative;
+}
+
+.export-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+    padding: 12px 0;
+}
+
+.export-button:hover {
+    opacity: 1;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    padding: 12px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 38px; 
+    width: auto;
+}
+
+
+.semester-content,
+.export-dropdown,
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    min-width: 150px;
+    top: 100%;
+    margin-top: 5px;
+}
+
+.semester-content {
+    left: 0;
+}
+
+.export-dropdown {
+    right: 0;
+}
+
+.dropdown-content {
+    right: 0;
+}
+
+.semester-content.show,
+.export-dropdown.show,
+.dropdown-content.show {
+    display: block;
+}
+
+.semester-content a,
+.export-dropdown a,
+.dropdown-content a {
+    display: block;
+    padding: 8px 12px;
+    color: #333;
+    font-size: 14px;
+}
+
+.semester-content a:hover,
+.export-dropdown a:hover,
+.dropdown-content a:hover {
+    background-color: #f5f7fa;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #e0e4e8;
+    margin: 8px 0;
+}
+
+.user-info {
+    padding: 8px 12px;
+}
+
+.student-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.student-id {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+
+main {
+    display: flex;
+    padding: 20px; 
+    background-color: #f0f2f5; 
+    min-height: calc(100vh - 85px - 60px);
+    width: 100%;
+    max-width: 100%;
+    gap: 20px; 
+}
+
+
+main.schedule-only .sidebar {
+    display: none;
+}
+
+
+main.schedule-only .schedule-grid {
+    width: 100%;
+}
+
+
+.schedule-grid {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+}
+
+.schedule-grid table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-bottom: 0;
+    height: 100%;
+}
+
+.schedule-grid th,
+.schedule-grid td {
+    border: 1px solid #e0e0e0;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+    position: relative;
+    height: 60px;
+}
+
+.schedule-grid th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+    height: 36px;
+}
+
+
+.schedule-grid td:first-child {
+    color: #666;
+    font-size: 12px;
+    font-weight: 400;
+    width: 50px;
+    min-width: 50px;
+    background-color: #f8f9fa;
+    border-top: none;
+    border-bottom: none;
+    vertical-align: top;
+    padding-top: 0;
+    text-align: center;
+    position: relative;
+}
+
+
+.time-label {
+    position: absolute;
+    top: -10px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    display: inline-block;
+    white-space: nowrap;
+    background-color: #f8f9fa; 
+    padding: 0 5px; 
+    z-index: 3; 
+    box-shadow: 0 0 0 3px #f8f9fa; 
+}
+
+
+.schedule-grid tbody tr td:first-child:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #f8f9fa; 
+    z-index: 2; 
+}
+
+
+.schedule-grid tbody tr td:first-child {
+    border-right: 1px solid #e0e0e0;
+}
+
+.course-block {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    padding: 8px !important;
+    border-radius: 0 !important;
+    background-color: #4A90E2 !important;
+    color: white !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    z-index: 2 !important;
+    box-sizing: border-box !important;
+}
+
+
+.search-prereq-btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 0;
+    width: 100%;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+
+.prereq-info {
+    color: #6c757d;
+    font-size: 14px;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+.search-input {
+    margin-bottom: 16px; 
+    width: 100%;
+    border: 1px solid #e0e4e8;
+    font-size: 14px;
+    border-radius: 4px; 
+}
+
+
+.division-buttons {
+    display: flex;
+    gap: 12px; 
+    margin-bottom: 16px; 
+}
+
+.division-btn {
+    flex: 1;
+    padding: 8px 0;
+    border: 1px solid #e0e4e8;
+    border-radius: 4px;
+    background: white;
+    color: #495057;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.division-btn:hover {
+    background-color: #f8f9fa;
+}
+
+
+@media screen and (max-width: 1200px) {
+    header {
+        padding: 12px 30px;
+    }
+
+    .nav-links {
+        gap: 20px;
+        margin: 0 25px;
+    }
+
+    .header-left,
+    .header-right {
+        gap: 20px;
+    }
+
+    .logo img {
+        height: 50px; 
+    }
+
+    .university-name {
+        font-size: 24px;
+    }
+
+    .university-subtitle {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    header {
+        padding: 10px 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        margin: 0 15px;
+    }
+
+    .header-left,
+    .header-right {
+        gap: 15px;
+    }
+
+    .logo img {
+        height: 45px;
+        margin-right: 10px;
+    }
+
+    .university-name {
+        font-size: 22px;
+    }
+
+    .university-subtitle {
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .nav-right {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 25px; 
+}
+
+.export-container {
+    position: relative;
+}
+
+.user-dropdown {
+    position: relative;
+}
+
+.export-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+    padding: 8px 0; 
+}
+
+.export-button:hover {
+    opacity: 1;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    padding: 8px 0; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 25px;
+    width: auto;
+}
+
+
+.finals-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.finals-container h2 {
+    color: #142A50;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.finals-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.finals-container th {
+    background-color: #142A50;
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.finals-container td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.finals-container tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.finals-container tr:hover {
+    background-color: #f2f7ff;
+}
+
+.finals-info-box {
+    background-color: #f2f7ff;
+    border-left: 4px solid #142A50;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 0 4px 4px 0;
+}
+
+.finals-info-box h3 {
+    margin-top: 0;
+    color: #142A50;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.finals-info-box p {
+    margin: 10px 0;
+    line-height: 1.5;
+    color: #333;
+}
+
+
+body.dark-mode .finals-container h2 {
+    color: #a4c7fa;
+}
+
+body.dark-mode .finals-container th {
+    background-color: #1e3a66;
+    color: #e9ecef;
+}
+
+body.dark-mode .finals-container td {
+    border-color: #2c3440;
+}
+
+body.dark-mode .finals-container tr:nth-child(even) {
+    background-color: #232b38;
+}
+
+body.dark-mode .finals-container tr:nth-child(odd) {
+    background-color: #1a2232;
+}
+
+body.dark-mode .finals-container tr:hover {
+    background-color: #273344;
+}
+
+body.dark-mode .finals-info-box {
+    background-color: #1a2232;
+    border-left-color: #3670d6;
+}
+
+body.dark-mode .finals-info-box h3 {
+    color: #a4c7fa;
+}
+
+body.dark-mode .finals-info-box p {
+    color: #cfd6e1;
+}

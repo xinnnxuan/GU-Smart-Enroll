@@ -1,0 +1,460 @@
+
+.event-block, .course-block, .test-course-block {
+    position: absolute !important;
+    width: 100% !important;  
+    left: 0 !important;      
+    top: 0 !important;       
+    right: 0 !important;     
+    padding: 8px !important;
+    border-radius: 4px !important;
+    background-color: #4A90E2 !important;
+    color: white !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    box-sizing: border-box !important;  
+    z-index: 2 !important;   
+    opacity: 0.9 !important;
+    visibility: visible !important;
+    transition: all 0.2s ease-in-out !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    cursor: pointer !important;
+}
+
+
+.course-delete-btn {
+    position: absolute !important;
+    top: 2px !important;
+    right: 2px !important;
+    width: 16px !important;
+    height: 16px !important;
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 10px !important;
+    cursor: pointer !important;
+    opacity: 0.7 !important;
+    transition: all 0.2s ease !important;
+    z-index: 3 !important;
+    border: none !important;
+    padding: 0 !important;
+    font-weight: bold !important;
+    line-height: 1 !important;
+}
+
+.course-delete-btn:hover {
+    background-color: rgba(255, 0, 0, 0.7) !important;
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
+
+.schedule-grid td {
+    position: relative;
+}
+
+.event-block:hover, .course-block:hover, .test-course-block:hover {
+    opacity: 1 !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+    transform: translateY(-2px) !important;
+}
+
+.event-name {
+    font-weight: 600;
+    font-size: 0.95em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+    padding-right: 14px; 
+}
+
+.event-time {
+    font-size: 0.8em;
+    opacity: 0.9;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.event-location {
+    font-size: 0.75em;
+    opacity: 0.8;
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: auto;
+}
+
+
+@keyframes highlight-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+    50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+}
+
+.highlight-animation {
+    animation: highlight-pulse 1.5s ease;
+}
+
+
+.export-container {
+    position: relative;
+    display: inline-block;
+}
+
+.export-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 8px 0;
+    z-index: 1000;
+    display: none;
+    margin-top: 5px;
+}
+
+.export-dropdown.show {
+    display: block;
+}
+
+.export-dropdown a {
+    display: block;
+    padding: 8px 16px;
+    color: #142A50;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.export-dropdown a:hover {
+    background-color: #B41231;
+    color: #ffffff;
+}
+
+.export-button .arrow {
+    display: inline-block;
+    margin-left: 5px;
+    color: #ffffff;
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.export-button.active .arrow {
+    transform: rotate(180deg);
+}
+
+
+.prereq-tree-view {
+    padding: 15px 0;
+}
+
+.prereq-tree-container {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coming-soon {
+    color: #6c757d;
+    font-style: italic;
+}
+
+
+.event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+}
+
+.time-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.day-selection {
+    display: flex;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.weekday-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f2f5;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    color: #142A50;
+    transition: all 0.2s ease;
+}
+
+.weekday-btn:hover {
+    background-color: #e0e4e8;
+}
+
+.weekday-btn.selected {
+    background-color: #142A50;
+    color: white;
+}
+
+.add-event-btn {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #142A50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.add-event-btn:hover {
+    background-color: #0d1b33;
+}
+
+.day-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.day-button {
+    flex: 1;
+    padding: 12px 8px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.day-button:hover {
+    background-color: #f8f9fa;
+    border-color: #142A50;
+}
+
+.day-button.selected {
+    background-color: #142A50 !important;
+    color: white !important;
+    border-color: #142A50 !important;
+}
+
+.event-block {
+    position: absolute;
+    background-color: #E8F4F9;
+    border: 1px solid #BFE3F2;
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 1;
+}
+
+.event-block:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+}
+
+.event-block .event-title {
+    font-weight: 500;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.event-block .event-time {
+    font-size: 11px;
+    color: #666;
+}
+
+.recurring-event {
+    background-color: #E8F4F9;
+    border-color: #BFE3F2;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #dc3545;
+}
+
+
+.event-edit-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.event-edit-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.event-edit-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
+    padding: 25px;
+    position: relative;
+}
+
+.event-edit-container h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 20px;
+}
+
+.event-edit-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    color: #95a5a6;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.event-edit-close:hover {
+    color: #e74c3c;
+}
+
+.event-edit-form .form-group {
+    margin-bottom: 15px;
+}
+
+.event-edit-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.event-edit-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.event-edit-form .time-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.event-edit-form .time-inputs input {
+    flex: 1;
+}
+
+.event-edit-weekdays {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.event-edit-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.event-edit-actions button {
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: none;
+}
+
+.event-delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.event-delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.event-duplicate-btn {
+    background-color: #f1c40f;
+    color: #2c3e50;
+}
+
+.event-duplicate-btn:hover {
+    background-color: #f39c12;
+}
+
+.event-update-btn {
+    background-color: #142a50;
+    color: white;
+}
+
+.event-update-btn:hover {
+    background-color: #0d1b33;
+}
+
+.event-color-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: 2px solid transparent;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.color-option.selected {
+    border-color: #2c3e50;
+    transform: scale(1.1);
+}

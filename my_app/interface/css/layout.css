@@ -1,0 +1,400 @@
+.sidebar {
+    width: 560px;
+    background-color: white;
+    border-right: 1px solid #e0e0e0;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    padding: 15px;
+    transition: all 0.3s ease;
+    z-index: 100;
+    display: block; 
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+    z-index: 10;
+    padding-bottom: 5px;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 15px 5px;
+    font-weight: 500;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    color: #333; 
+    font-size: 15px;
+    position: relative;
+    width: 25%;  
+}
+
+.tab-button.active {
+    color: #142A50; 
+    font-weight: 600; 
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px; 
+    background-color: #C8102E; 
+}
+
+.tab-content {
+    display: none;
+    width: 100%;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+#debug-sidebar {
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    padding: 8px !important;
+    margin-bottom: 15px !important;
+    color: #333 !important;
+    font-size: 12px !important;
+    font-family: monospace;
+}
+
+
+.search-form {
+    width: 100%;
+    padding: 0;
+}
+
+.search-form input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 0 0 15px 0;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #333; 
+    background-color: #fff; 
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin: 0 0 15px 0;
+    width: 100%;
+}
+
+.filter-button {
+    flex: 1;
+    padding: 12px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333; 
+}
+
+.filter-button:hover,
+.filter-button.active {
+    background-color: #f5f5f5;
+    border-color: #142A50;
+    color: #142A50;
+}
+
+.search-btn {
+    background-color: #142A50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 0;
+    width: 100%;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 8px 0 0 0;
+    font-weight: 500;
+}
+
+.search-btn:hover {
+    background-color: #0e1d38;
+}
+
+.prereq-info {
+    color: #333; 
+    font-size: 14px;
+    margin-top: 15px;
+    line-height: 1.5;
+    width: 100%;
+}
+
+
+.day-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.day-button {
+    flex: 1;
+    padding: 12px 8px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+}
+
+.day-button:hover {
+    background-color: #f5f5f5;
+    border-color: #142A50;
+    color: #142A50;
+}
+
+.day-button.selected {
+    background-color: #142A50;
+    color: white;
+    border-color: #142A50;
+}
+
+
+main {
+    display: flex;
+    height: calc(100vh - 60px);
+    overflow: hidden;
+}
+
+.content-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.main-content-view {
+    display: none;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.main-content-view.active {
+    display: flex;
+}
+
+
+#registration-view.active {
+    display: flex;
+}
+
+
+.sidebar-tabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+}
+
+.sidebar-tabs a {
+    padding: 8px 12px;
+    color: #495057;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    font-weight: 500;
+    text-align: center;
+    flex: 1;
+    width: 25%;  
+}
+
+.sidebar-tabs a.active {
+    color: #142A50;
+    border-bottom-color: #142A50;
+}
+
+.sidebar-tabs a:hover {
+    color: #142A50;
+    background-color: rgba(20, 42, 80, 0.05);
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+input[type="text"]:not(.search-form input[type="text"]) {
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+
+.schedule-grid {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.schedule-grid table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-bottom: 0;
+    flex: 1;
+}
+
+
+.schedule-grid table, .schedule-grid {
+    height: 100%;
+}
+
+
+.schedule-grid tbody tr:last-child {
+    margin-bottom: 0;
+}
+
+.schedule-grid th, .schedule-grid td {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #e0e4e8;
+}
+
+.schedule-grid th {
+    background-color: #142A50;
+    color: #ffffff;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    height: 36px;
+}
+
+.schedule-grid td {
+    height: 60px;
+    padding: 0;
+}
+
+.schedule-grid td:first-child {
+    width: 80px;
+    text-align: right;
+    padding-right: 10px;
+    color: #495057;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.schedule-grid .time-header {
+    background-color: #142A50;
+    color: #ffffff;
+}
+
+.schedule-grid th:not(:first-child),
+.schedule-grid td:not(:first-child) {
+    width: calc((100% - 80px) / 5);
+}
+
+
+.registration-header, .registration-placeholder {
+    display: none !important;
+}
+
+
+.event-block {
+    position: absolute;
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: #808080;
+    color: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    box-sizing: border-box;
+}
+
+.event-block:hover {
+    opacity: 0.9;
+}
+
+
+.edit-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.edit-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 300px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.save-btn, .cancel-btn {
+    flex: 1;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background: #4A90E2;
+    color: white;
+}
+
+.cancel-btn {
+    background: #e0e4e8;
+    color: #495057;
+}
+
+
+@media screen and (max-width: 768px) {
+    .sidebar, .schedule-container {
+        width: 100%;
+        min-width: unset;
+    }
+    .nav-sections, .user-controls {
+        flex-direction: column;
+        border: none;
+        padding-top: 10px;
+    }
+    .schedule-grid {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .schedule-grid table {
+        min-width: 600px;
+    }
+}

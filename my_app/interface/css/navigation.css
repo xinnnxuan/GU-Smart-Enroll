@@ -1,0 +1,327 @@
+
+.nav-sections {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(15px, 2vw, 25px); 
+    max-width: 100%;
+    width: 100%;
+}
+
+
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; 
+}
+
+
+.semester-dropdown,
+.credits-display,
+.export-container,
+.user-dropdown {
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    margin: 0 40px;
+    max-width: 800px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 4px;
+    opacity: 0.8;
+    transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.9;
+}
+
+.nav-links a.active {
+    opacity: 1;
+    font-weight: 500;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #C8102E;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.nav-links a.active::after {
+    transform: scaleX(1);
+}
+
+
+body.dark-mode .nav-links a {
+    color: #e0e0e0;
+}
+
+body.dark-mode .nav-links a::after {
+    background-color: #C8102E;
+}
+
+
+.nav-button, .semester-button, .export-button {
+    padding: 10px 0; 
+    min-height: 34px; 
+    display: flex;
+    align-items: center;
+    gap: 6px; 
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 15px;
+}
+
+.nav-button:hover, .export-button:hover {
+    opacity: 1;
+    color: #ffffff;
+}
+
+
+.export-button {
+    background: none;
+    border: none;
+    color: white;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+
+.nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.logo img {
+    height: 55px; 
+    width: auto;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    color: white;
+    line-height: 1.1;
+}
+
+.university-name {
+    font-size: 1.5em; 
+    text-transform: uppercase;
+}
+
+.university-subtitle {
+    font-size: 0.95em; 
+    letter-spacing: 1px;
+}
+
+
+.export-container,
+.user-dropdown {
+    position: relative;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 8px 0;
+    z-index: 1000;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 8px 16px;
+    color: #142A50;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #f5f7fa;
+}
+
+
+.semester-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.semester-button {
+    padding: 6px 12px;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.semester-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    margin-top: 5px;
+    z-index: 1000;
+    padding: 6px 0;
+}
+
+.semester-content.show {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.semester-content a {
+    padding: 8px 16px;
+    display: block;
+    color: #142A50;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.semester-content a:hover {
+    background-color: #B41231;
+    color: #ffffff;
+}
+
+.arrow {
+    font-size: 0.8em;
+    transition: transform 0.2s ease;
+}
+
+.semester-content.show + .semester-button .arrow {
+    transform: rotate(180deg);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.arrow {
+    font-size: 0.8em;
+    transition: transform 0.2s ease;
+    color: #ffffff;
+}
+
+.semester-button.active .arrow,
+.export-button.active .arrow {
+    transform: rotate(180deg);
+}
+
+
+@media screen and (max-width: 1200px) {
+    header {
+        padding: 12px 30px;
+    }
+    
+    .nav-links {
+        margin: 0 25px;
+        gap: 20px;
+    }
+    
+    .header-left,
+    .header-right {
+        gap: 20px;
+    }
+    
+    .logo img {
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    header {
+        padding: 10px 20px;
+    }
+    
+    .nav-links {
+        margin: 0 15px;
+        gap: 15px;
+    }
+    
+    .header-left,
+    .header-right {
+        gap: 15px;
+    }
+    
+    .logo img {
+        height: 45px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+    }
+    
+    .header-left,
+    .nav-links,
+    .header-right {
+        margin: 5px 0;
+        gap: 15px;
+    }
+    
+    .nav-links {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 5px;
+    }
+    
+    .header-right {
+        justify-content: flex-end;
+    }
+}

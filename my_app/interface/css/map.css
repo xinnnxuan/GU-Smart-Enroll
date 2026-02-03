@@ -1,0 +1,354 @@
+
+#map-view {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    
+}
+
+#map-view .sidebar {
+    width: 350px;
+    min-width: 350px;
+    max-width: 350px;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #fff;
+    border-right: 1px solid #e0e0e0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    z-index: 5;
+    
+    
+    
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+#map-view .content-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    padding: 20px;
+    overflow: hidden;
+    height: 100%;
+    
+    
+    
+    
+}
+
+#map-view .map-container {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+
+.building-list, .floor-plans, .campus-map {
+    padding: 15px;
+}
+
+.building-list h3, .floor-plans h3, .campus-map h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #142A50;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.building-item, .floor-plan-item {
+    margin-bottom: 10px;
+}
+
+.building-btn, .floor-plan-btn {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.building-btn:hover, .floor-plan-btn:hover {
+    background-color: #f5f5f5;
+    border-color: #142A50;
+    color: #142A50;
+}
+
+
+.map-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.map-control-btn {
+    flex: 1;
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.map-control-btn:hover {
+    background-color: #f5f5f5;
+    border-color: #142A50;
+    color: #142A50;
+}
+
+
+.map-legend {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.map-legend h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #142A50;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.legend-color.academic {
+    background-color: #3498db;
+}
+
+.legend-color.residential {
+    background-color: #2ecc71;
+}
+
+.legend-color.dining {
+    background-color: #e67e22;
+}
+
+
+body.dark-mode #map-view .sidebar {
+    background-color: #1a2530;
+    border-right-color: #2c3e50;
+}
+
+body.dark-mode #map-view .content-container {
+    background-color: #1a2530;
+}
+
+body.dark-mode #map-view .map-container {
+    background-color: #2c3e50;
+}
+
+body.dark-mode .building-btn,
+body.dark-mode .floor-plan-btn,
+body.dark-mode .map-control-btn {
+    background-color: #2c3e50;
+    border-color: #34495e;
+    color: #ecf0f1;
+}
+
+body.dark-mode .building-btn:hover,
+body.dark-mode .floor-plan-btn:hover,
+body.dark-mode .map-control-btn:hover {
+    background-color: #34495e;
+    border-color: #3498db;
+    color: #3498db;
+}
+
+body.dark-mode .map-legend {
+    background-color: #2c3e50;
+}
+
+body.dark-mode .map-legend h4 {
+    color: #ecf0f1;
+}
+
+
+@media (max-width: 992px) {
+    #map-view {
+        flex-direction: column;
+    }
+    
+    #map-view .sidebar {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        height: auto;
+        max-height: 50vh;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        position: relative;
+        left: 0;
+    }
+    
+    #map-view .content-container {
+        height: 50vh;
+        position: relative;
+        left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .map-controls {
+        flex-direction: column;
+    }
+    
+    .map-control-btn {
+        width: 100%;
+    }
+}
+
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.accordion-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: none;
+}
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 10px 16px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s;
+}
+.accordion-content {
+    padding: 12px 16px;
+    font-size: 1em;
+    background: rgba(255,255,255,0.7);
+}
+
+.accordion-item.monday .accordion-header,
+.accordion-item.monday[open] .accordion-header {
+    background: #f4b6ad;
+    color: #222;
+}
+.accordion-item.monday .accordion-content {
+    background: #f4b6ad;
+}
+.accordion-item.tuesday .accordion-header {
+    background: #f7d9c4;
+    color: #222;
+}
+.accordion-item.tuesday .accordion-content {
+    background: #f7d9c4;
+}
+.accordion-item.wednesday .accordion-header {
+    background: #eae7dc;
+    color: #222;
+}
+.accordion-item.wednesday .accordion-content {
+    background: #eae7dc;
+}
+.accordion-item.thursday .accordion-header {
+    background: #b7e4e0;
+    color: #222;
+}
+.accordion-item.thursday .accordion-content {
+    background: #b7e4e0;
+}
+.accordion-item.friday .accordion-header {
+    background: #6ec6ca;
+    color: #222;
+}
+.accordion-item.friday .accordion-content {
+    background: #6ec6ca;
+}
+
+.accordion-header::after {
+    content: '\25BC';
+    font-size: 1em;
+    margin-left: auto;
+    transition: transform 0.2s;
+}
+.accordion-header[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+}
+.accordion-header[aria-expanded="false"]::after {
+    transform: rotate(0deg);
+}
+
+
+.map-tab-button {
+    background: none;
+    border: none;
+    padding: 15px 0;
+    font-weight: 500;
+    cursor: pointer;
+    width: 50%;
+    text-align: center;
+    color: #333;
+    font-size: 15px;
+    position: relative;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.map-tab-button.active {
+    color: #142A50;
+}
+
+.map-tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #142A50;
+}
+
+.map-tab-content {
+    display: none;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.map-tab-content.active {
+    display: block !important;
+}
+
+
+#WeekdayTab.active,
+#BlueprintsTab.active {
+    display: block !important;
+} 

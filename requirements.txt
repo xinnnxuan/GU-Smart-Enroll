@@ -1,0 +1,8 @@
+flask
+flask-cors
+supabase
+bcrypt
+requests
+python-dotenv
+gunicorn
+openpyxl
